@@ -1,13 +1,13 @@
 /// fork from https://github.com/MetaMask/KeyringController/blob/master/index.js
-import * as bitcoin from 'bitcoinjs-lib';
-import Mnemonic from 'bitcore-mnemonic';
+import * as bitcoin from 'litecoinjs-lib';
+import Mnemonic from 'litecore-mnemonic';
 import encryptor from 'browser-passworder';
 import { EventEmitter } from 'events';
 import log from 'loglevel';
 
 import { ObservableStore } from '@metamask/obs-store';
-import { HdKeyring } from '@unisat/bitcoin-hd-keyring';
-import { SimpleKeyring } from '@unisat/bitcoin-simple-keyring';
+import { HdKeyring } from '@unilite/litecoin-hd-keyring';
+import { SimpleKeyring } from '@unilite/litecoin-simple-keyring';
 
 import i18n from '../i18n';
 import DisplayKeyring from './display';
@@ -50,7 +50,7 @@ export interface Keyring {
   deserialize(opts: any): Promise<void>;
   addAccounts(n: number): Promise<string[]>;
   getAccounts(): Promise<string[]>;
-  signTransaction(psbt: bitcoin.Psbt, inputs: ToSignInput[]): Promise<bitcoin.Psbt>;
+  signTransaction(psbt: litecoin.Psbt, inputs: ToSignInput[]): Promise<litecoin.Psbt>;
   signMessage(address: string, message: string): Promise<string>;
   verifyMessage(address: string, message: string, sig: string): Promise<boolean>;
   exportAccount(address: string): Promise<string>;
